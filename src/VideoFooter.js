@@ -3,25 +3,25 @@ import React from 'react';
 import Ticker from 'react-ticker';
 import './VideoFooter.css';
 
-function VideoFooter() {
+function VideoFooter({description, channel, song}) {
     return (
         <div className="videoFooter" >
             <div className="videoFooter__text">
-              <h3>@UsamaMK</h3>
-              <p>some desc..</p>
+              <h3>@{channel}</h3>
+              <p>{description}</p>
               <div className="videoFooter__ticker">
                   <MusicNote className="videoFooter__icon" />
                   <Ticker mode="smooth" >
                         {({index})=> (
                             <>
-                            <p>I am a dev</p>
+                            <p>{song}</p>
                             </>
                         )}
                   </Ticker>
               </div>
             </div>
             <img
-        style={{ marginTop: "24px" }}
+        style={{ marginTop: "100px" }}
         className="videoFooter__record"
         src="https://static.thenounproject.com/png/934821-200.png"
         alt=""

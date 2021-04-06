@@ -20,8 +20,14 @@
 
   .videoFooter__icon{
     position: absolute;
+    display: flex;
+    align-self: center;
+    
   }
-
+  .videoFooter__ticker{
+    display: flex;
+    align-content: center;
+  }
   .videoFooter__ticker> .ticker{
     height: fit-content;
     margin-left: 30px;
@@ -30,8 +36,10 @@
 
   .videoFooter__record {
     animation: spinTheRecord infinite 5s linear;
-    height: 40px;
+    height: 50px;
     filter: invert(1);
+    position: absolute;
+    right: 10px;
   }
   
   @keyframes spinTheRecord {
