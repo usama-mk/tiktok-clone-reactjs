@@ -12,9 +12,9 @@ export default function VideoSidebar({ likes, comments, shares }) {
   function toggleLike() {
     // update liked count
     if (liked) {
-      setLikedCount(likedCount - 1);
+      setLikedCount(parseInt(likedCount) - 1);
     } else {
-      setLikedCount(likedCount + 1);
+      setLikedCount(parseInt(likedCount) + 1);
     }
     setLiked(!liked);
   }
