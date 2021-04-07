@@ -1,12 +1,40 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 import Video from './Video';
+import axios from './axios.js';
 
 function App() {
+  const [videos, setVideos]= useState([]);
+
+  useEffect(()=>{
+    
+  async function fetchPosts(){
+    const response= await axios.get("/v2/posts");
+    setVideos(response.data);
+    console.log(response.data);
+    return response;
+  }
+
+  fetchPosts();
+  }, []);
+
   return (
     <div className="app">
       <div className="app__videos">
-      <Video likes="12" shares="3" messages="1" channel="Usama MK" song="lut gaye hum tou pehli" description="desc of MK" url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"/>
-      <Video likes="12" shares="3" messages="1" channel="Elon Musk" song="lut gaye hum tou pehli" description="desc of Elon Musk" url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"/>
+      {videos.map((video)=>{
+       return (
+        <Video
+        url={video.url}
+        channel={video.channel}
+        song={video.song}
+        likes={video.likes}
+        messages={video.messages}
+        description={video.description}
+        shares={video.shares}
+        />
+       );
+     })}
+     
       </div>
     </div>
   );
